@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Minecraft-style grass block top: green with darker grass edge -->
+  <rect width="32" height="32" fill="#7cba3d"/>
+  <rect x="0" y="0" width="32" height="6" fill="#5a8c29"/>
+  <rect x="0" y="0" width="6" height="32" fill="#5a8c29"/>
+  <rect x="0" y="26" width="32" height="6" fill="#4a7522"/>
+  <rect x="26" y="0" width="6" height="32" fill="#4a7522"/>
+</svg>
