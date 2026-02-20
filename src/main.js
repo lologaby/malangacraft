@@ -1,7 +1,10 @@
 const SERVER_IP = 'malangacraft.dot0x.com'
 const TOAST_DURATION = 2200
-/** API que consulta el puerto por defecto de Minecraft (25565) con el protocolo Server List Ping */
-const STATUS_API = 'https://api.mcstatus.io/v2/status/java'
+
+const STATUS_APIS = [
+  `https://api.mcstatus.io/v2/status/java/${encodeURIComponent(SERVER_IP)}`,
+  `https://api.mcsrvstat.us/2/${encodeURIComponent(SERVER_IP)}`,
+]
 
 /**
  * Copia la IP del servidor al portapapeles y muestra un toast.
@@ -25,8 +28,21 @@ function fallbackCopy() {
 }
 
 /**
- * Obtiene el estado del servidor consultando el puerto 25565 (protocolo Minecraft).
- * Usa mcstatus.io, que hace Server List Ping al puerto por defecto.
+ * Normaliza la respuesta de mcstatus.io o mcsrvstat.us a un formato común.
+ */
+function normalizeStatus(data) {
+  const online = Boolean(data?.online)
+  let icon = data?.icon
+  if (icon && !icon.startsWith('data:')) icon = `data:image/png;base64,${icon}`
+  let clean = data?.motd?.clean
+  if (Array.isArray(clean)) clean = clean.join(' ').trim()
+  else if (clean != null) clean = String(clean).replace(/\n/g, ' ').trim()
+  const players = data?.players
+  return { online, icon: icon || null, motdClean: clean || '', players }
+}
+
+/**
+ * Obtiene el estado del servidor (puerto 25565). Prueba mcstatus.io y, si falla, mcsrvstat.us.
  */
 async function fetchServerStatus() {
   const loading = document.getElementById('status-loading')
@@ -38,58 +54,71 @@ async function fetchServerStatus() {
   const motdEl = document.getElementById('server-motd')
   const playersEl = document.getElementById('server-players')
 
+  const setLoading = (v) => { if (loading) loading.hidden = !v }
+  const setContent = (v) => { if (content) content.hidden = !v }
+  const setError = (v) => { if (errorEl) errorEl.hidden = !v }
+
   if (!loading || !content || !errorEl) return
 
-  try {
-    const res = await fetch(`${STATUS_API}/${encodeURIComponent(SERVER_IP)}`)
-    if (!res.ok) throw new Error('API error')
-    const data = await res.json()
-
-    loading.hidden = true
-    errorEl.hidden = true
-    content.hidden = false
-
-    if (data.online) {
-      statusDot.classList.add('online')
-      statusText.textContent = 'Online'
-
-      if (data.icon) {
-        iconEl.src = data.icon.startsWith('data:') ? data.icon : `data:image/png;base64,${data.icon}`
-        iconEl.hidden = false
-      } else {
-        iconEl.hidden = true
+  let data = null
+  for (const url of STATUS_APIS) {
+    try {
+      const res = await fetch(url)
+      if (res.ok) {
+        data = await res.json()
+        break
       }
+    } catch {
+      continue
+    }
+  }
 
-      const clean = data.motd?.clean
-      if (clean != null && String(clean).trim()) {
-        motdEl.textContent = (Array.isArray(clean) ? clean.join(' ') : String(clean)).replace(/\n/g, ' ').trim()
-        motdEl.hidden = false
-      } else {
-        motdEl.hidden = true
-      }
+  setLoading(false)
+  setError(false)
+  setContent(true)
 
-      if (playersEl && data.players != null && typeof data.players.online === 'number') {
-        const max = data.players.max ?? '?'
-        playersEl.textContent = `${data.players.online} / ${max} players`
-        playersEl.hidden = false
-      } else if (playersEl) {
-        playersEl.hidden = true
-      }
+  if (!data) {
+    setContent(false)
+    setError(true)
+    return
+  }
+
+  const { online, icon: iconUrl, motdClean, players: playersData } = normalizeStatus(data)
+
+  if (statusDot) {
+    if (online) statusDot.classList.add('online')
+    else statusDot.classList.remove('online')
+  }
+  if (statusText) statusText.textContent = online ? 'Online' : 'Offline'
+
+  if (iconEl) {
+    if (online && iconUrl) {
+      iconEl.src = iconUrl
+      iconEl.hidden = false
     } else {
-      statusDot.classList.remove('online')
-      statusText.textContent = 'Offline'
       iconEl.hidden = true
+    }
+  }
+
+  if (motdEl) {
+    if (online && motdClean) {
+      motdEl.textContent = motdClean
+      motdEl.hidden = false
+    } else {
       motdEl.textContent = ''
       motdEl.hidden = true
-      if (playersEl) {
-        playersEl.textContent = ''
-        playersEl.hidden = true
-      }
     }
-  } catch {
-    loading.hidden = true
-    content.hidden = true
-    errorEl.hidden = false
+  }
+
+  if (playersEl) {
+    if (online && playersData != null && typeof playersData.online === 'number') {
+      const max = playersData.max ?? '?'
+      playersEl.textContent = `${playersData.online} / ${max} players`
+      playersEl.hidden = false
+    } else {
+      playersEl.textContent = ''
+      playersEl.hidden = true
+    }
   }
 }
 

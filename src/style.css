@@ -271,6 +271,124 @@
     box-shadow: 0 0 0 1px var(--border-bright), var(--amethyst-glow);
   }
 
+  .card-desc {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 0.75rem;
+    line-height: 1.4;
+  }
+
+  .actions-primary .card-label {
+    margin-bottom: 0.6rem;
+  }
+
+  .actions-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .actions-row .ip-block {
+    margin-bottom: 0;
+  }
+
+  .btn-discord {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 44px;
+    padding: 0.65rem 1.25rem;
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #fff;
+    background: #5865F2;
+    border: none;
+    border-radius: var(--radius);
+    transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+    box-shadow: 0 0 0 1px rgba(88, 101, 242, 0.4);
+  }
+
+  .btn-discord:hover {
+    background: #4752c4;
+    color: #fff;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 20px rgba(88, 101, 242, 0.35);
+  }
+
+  .btn-discord:active {
+    transform: translateY(0);
+  }
+
+  .discord-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    flex-shrink: 0;
+  }
+
+  @media (min-width: 420px) {
+    .actions-row {
+      flex-direction: row;
+      align-items: stretch;
+    }
+    .actions-row .ip-block {
+      flex: 1;
+      min-width: 0;
+    }
+    .btn-discord {
+      flex-shrink: 0;
+    }
+  }
+
+  .pack-links {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+
+  .pack-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 44px;
+    padding: 0.65rem 0.9rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    font-family: var(--font-body);
+    color: var(--text-muted);
+    text-decoration: none;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    transition: border-color var(--transition), color var(--transition), background var(--transition), transform var(--transition);
+  }
+
+  .pack-link:hover {
+    border-color: var(--amethyst);
+    color: var(--text);
+    background: var(--bg-card-hover);
+    transform: translateY(-1px);
+  }
+
+  .pack-link-icon {
+    width: 22px;
+    height: 22px;
+    border-radius: 4px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+
+  @media (width < 380px) {
+    .pack-links {
+      grid-template-columns: 1fr;
+    }
+  }
+
   .card .card-label {
     display: flex;
     align-items: center;
@@ -698,6 +816,7 @@
   @media (max-width: 480px) {
     .page { padding: 1.25rem 1rem; }
     .container { padding-inline: 0; }
+    .actions-row .ip-block .btn-join { width: 100%; }
   }
 
   @media (width < 380px) {
