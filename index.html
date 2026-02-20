@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#07080c">
+  <title>MalangaCraft · Minecraft Server · FTB Stoneblock 4</title>
+  <meta name="description" content="Join MalangaCraft. FTB Stoneblock 4 · 1.21.1. IP: malangacraft.dot0x.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/src/style.css">
+</head>
+<body>
+
+  <div class="bg-theme" aria-hidden="true">
+    <div class="bg-malangas">
+      <div class="bg-malanga bg-malanga-1"></div>
+      <div class="bg-malanga bg-malanga-2"></div>
+      <div class="bg-malanga bg-malanga-3"></div>
+      <div class="bg-malanga bg-malanga-4"></div>
+      <div class="bg-malanga bg-malanga-5"></div>
+      <div class="bg-malanga bg-malanga-6"></div>
+    </div>
+    <div class="bg-noise"></div>
+    <div class="bg-gradient-cave"></div>
+    <div class="glow glow-amethyst"></div>
+    <div class="glow glow-amber"></div>
+  </div>
+
+  <main class="page">
+    <div class="container">
+      <header class="hero card-reveal" style="--i: 0">
+        <p class="hero-eyebrow">FTB Stoneblock 4 · 1.21.1</p>
+        <div class="logo-wrap">
+          <h1 class="logo">Malanga<span class="logo-accent">Craft</span></h1>
+          <p class="hero-tagline">The stone remembers.</p>
+          <div class="logo-line"></div>
+        </div>
+        <p class="hero-sub">One server. Endless stone. Join the depths.</p>
+      </header>
+
+      <section class="card card-theme card-reveal" style="--i: 1">
+        <p class="card-label"><span class="label-icon">◇</span> Connect</p>
+        <div class="ip-block ip-block-cta">
+          <span id="ip-value" class="ip-value">malangacraft.dot0x.com</span>
+          <button type="button" class="btn-join" data-copy-ip aria-label="Copy IP and join">Join server</button>
+        </div>
+      </section>
+
+      <section class="card card-theme card-reveal" id="server-status" aria-live="polite" style="--i: 2">
+        <p class="card-label"><span class="label-icon">◇</span> Server status</p>
+        <div class="status-block" id="status-block">
+          <div class="status-loading" id="status-loading">Checking…</div>
+          <div class="status-content" id="status-content" hidden>
+            <div class="status-row">
+              <img class="server-icon" id="server-icon" alt="" width="64" height="64" hidden>
+              <div class="status-info">
+                <div class="status-headline">
+                  <span class="status-dot" id="status-dot" aria-hidden="true"></span>
+                  <span class="status-text" id="status-text">—</span>
+                  <span class="server-players" id="server-players" hidden></span>
+                </div>
+                <p class="server-motd" id="server-motd"></p>
+              </div>
+            </div>
+          </div>
+          <div class="status-error" id="status-error" hidden>Could not check status.</div>
+        </div>
+      </section>
+
+      <section class="card card-theme card-reveal" style="--i: 3">
+        <p class="card-label"><span class="label-icon">◇</span> Launchers</p>
+        <div class="launchers">
+          <a class="launcher-link" href="https://www.curseforge.com/download/app" target="_blank" rel="noopener">
+            <img class="launcher-logo" src="https://www.google.com/s2/favicons?domain=curseforge.com&sz=48" width="24" height="24" alt="">
+            CurseForge
+          </a>
+          <a class="launcher-link" href="https://prismlauncher.org/download/" target="_blank" rel="noopener">
+            <img class="launcher-logo" src="https://www.google.com/s2/favicons?domain=prismlauncher.org&sz=48" width="24" height="24" alt="">
+            Prism
+          </a>
+          <a class="launcher-link" href="https://feed-the-beast.com/app" target="_blank" rel="noopener">
+            <img class="launcher-logo" src="https://www.google.com/s2/favicons?domain=feed-the-beast.com&sz=48" width="24" height="24" alt="">
+            FTB App
+          </a>
+          <a class="launcher-link" href="https://atlauncher.com/downloads" target="_blank" rel="noopener">
+            <img class="launcher-logo" src="https://www.google.com/s2/favicons?domain=atlauncher.com&sz=48" width="24" height="24" alt="">
+            AT Launcher
+          </a>
+        </div>
+        <div class="unsafe-section">
+          <input type="checkbox" id="unsafe-cb" class="unsafe-checkbox" autocomplete="off">
+          <label for="unsafe-cb" class="unsafe-label">Unsafe / Cracked</label>
+          <div class="tlauncher-reveal">
+            <a class="launcher-link launcher-unsafe" href="https://tlauncher.org/en/" target="_blank" rel="noopener">
+              <img class="launcher-logo" src="https://www.google.com/s2/favicons?domain=tlauncher.org&sz=48" width="24" height="24" alt="">
+              TLauncher
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="card card-theme card-reveal" style="--i: 4">
+        <p class="card-label"><span class="label-icon">◇</span> Don't own Minecraft?</p>
+        <div class="buy-grid">
+          <a class="btn-buy btn-g2a" href="https://www.g2a.com/search?query=minecraft+java" target="_blank" rel="noopener">
+            <img class="btn-buy-logo" src="https://www.google.com/s2/favicons?domain=g2a.com&sz=48" width="22" height="22" alt="">
+            Get on G2A
+          </a>
+          <a class="btn-buy btn-xbox" href="https://www.xbox.com/en-US/games/store/minecraft-java-bedrock-edition-for-pc/9NXP44L49SHJ" target="_blank" rel="noopener">
+            <img class="btn-buy-logo" src="https://www.google.com/s2/favicons?domain=xbox.com&sz=48" width="22" height="22" alt="">
+            Microsoft Store
+          </a>
+        </div>
+      </section>
+
+      <footer class="footer card-reveal" style="--i: 5">
+        <p>Install the <strong>FTB Stoneblock 4</strong> modpack, then connect. We're waiting in the depths.</p>
+      </footer>
+    </div>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite">IP copied to clipboard</div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
