@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0b0d10"/>
+      <stop offset="100%" style="stop-color:#060709"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect x="1" y="1" width="1198" height="628" fill="none" stroke="rgba(139,92,246,0.2)" stroke-width="1"/>
+  <text x="600" y="260" text-anchor="middle" font-family="system-ui, sans-serif" font-size="72" font-weight="800" fill="#f1f3f5">Malanga<tspan fill="#8b5cf6">Craft</tspan></text>
+  <text x="600" y="360" text-anchor="middle" font-family="system-ui, sans-serif" font-size="42" font-weight="500" fill="#8b5cf6" font-style="italic">Descabronate la salud con nosotros!</text>
+  <text x="600" y="430" text-anchor="middle" font-family="system-ui, sans-serif" font-size="28" fill="#6b7280">FTB Stoneblock 4 · 1.21.1</text>
+  <text x="600" y="520" text-anchor="middle" font-family="system-ui, sans-serif" font-size="24" fill="#4b5563">malangacraft.dot0x.com</text>
+</svg>
