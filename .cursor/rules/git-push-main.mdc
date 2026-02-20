@@ -1,0 +1,11 @@
+---
+description: Always push to main when pushing to GitHub
+alwaysApply: true
+---
+
+# Git push to main
+
+When committing and pushing to GitHub for this project:
+
+- **Always push to the `main` branch.** Use `git push origin main` (or ensure the current branch is `main` and then `git push`).
+- Do not push to or create other branches unless the user explicitly asks for a different branch.
