@@ -12,23 +12,25 @@
 
 @layer base {
   :root {
-    /* Theme: depth, restraint, single accent */
-    --bg: #060709;
-    --bg-card: #0b0d10;
-    --bg-card-hover: #0f1115;
-    --border: rgba(255, 255, 255, 0.06);
-    --border-focus: rgba(139, 92, 246, 0.22);
-    --text: #f1f3f5;
-    --text-muted: #6b7280;
-    --text-tertiary: #4b5563;
-    --accent: #8b5cf6;
-    --accent-subtle: rgba(139, 92, 246, 0.12);
+    /* Theme: Caribbean / Boricua RP — ocean depth with tropical warmth */
+    --bg: #03080d;
+    --bg-card: #070d12;
+    --bg-card-hover: #0c1318;
+    --border: rgba(255, 255, 255, 0.055);
+    --border-focus: rgba(6, 182, 212, 0.25);
+    --text: #f0f4f8;
+    --text-muted: #64748b;
+    --text-tertiary: #475569;
+    --accent: #06b6d4;
+    --accent-subtle: rgba(6, 182, 212, 0.12);
     --accent-cta: #f59e0b;
     --accent-cta-subtle: rgba(245, 158, 11, 0.12);
-    --cyan: #67e8f9;
-    --cyan-subtle: rgba(103, 232, 249, 0.1);
+    --cyan: #22d3ee;
+    --cyan-subtle: rgba(34, 211, 238, 0.1);
     --red-offline: #ef4444;
     --red-subtle: rgba(239, 68, 68, 0.12);
+    --flag-red: #dc2626;
+    --flag-red-subtle: rgba(220, 38, 38, 0.1);
     --radius: 6px;
     --radius-lg: 10px;
     --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -149,9 +151,9 @@
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(ellipse 100% 60% at 50% 0%, var(--accent-subtle) 0%, transparent 50%),
-      radial-gradient(ellipse 80% 50% at 80% 80%, var(--accent-cta-subtle) 0%, transparent 45%),
-      radial-gradient(ellipse 60% 40% at 20% 70%, var(--accent-subtle) 0%, transparent 40%);
+      radial-gradient(ellipse 120% 60% at 70% 0%, rgba(6, 182, 212, 0.08) 0%, transparent 55%),
+      radial-gradient(ellipse 80% 50% at 20% 80%, rgba(245, 158, 11, 0.05) 0%, transparent 50%),
+      radial-gradient(ellipse 60% 40% at 80% 70%, rgba(6, 182, 212, 0.04) 0%, transparent 40%);
   }
 
   .glow {
@@ -161,12 +163,12 @@
     opacity: 0.18;
     animation: glowFloat 22s ease-in-out infinite;
   }
-  .glow-amethyst {
-    width: 45vmin;
-    height: 45vmin;
+  .glow-cyan {
+    width: 50vmin;
+    height: 50vmin;
     background: var(--accent);
-    top: -15%;
-    right: -10%;
+    top: -20%;
+    right: -12%;
   }
   .glow-amber {
     width: 40vmin;
@@ -253,6 +255,14 @@
 
   .hero .logo-accent {
     color: var(--accent);
+  }
+
+  .hero .logo-rp {
+    font-size: 0.55em;
+    font-weight: 600;
+    letter-spacing: var(--tracking-wider);
+    color: var(--accent-cta);
+    vertical-align: super;
   }
 
   .hero-tagline {
@@ -845,6 +855,157 @@
       visibility: visible;
       transform: translateX(-50%) translateY(0);
     }
+  }
+
+  /* ── Donate / Whitelist card ── */
+  .donate-card {
+    border-color: rgba(6, 182, 212, 0.15);
+    background: linear-gradient(
+      135deg,
+      rgba(6, 182, 212, 0.06) 0%,
+      var(--bg-card) 60%
+    );
+  }
+
+  .btn-donate {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-3);
+    width: 100%;
+    min-height: 52px;
+    padding: var(--space-4) var(--space-6);
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 700;
+    letter-spacing: var(--tracking-tight);
+    line-height: var(--leading-none);
+    text-decoration: none;
+    color: #0c0a09;
+    background: var(--accent-cta);
+    border-radius: var(--radius);
+    transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+    box-shadow: 0 0 0 1px rgba(245, 158, 11, 0.3), 0 4px 20px rgba(245, 158, 11, 0.2);
+  }
+
+  .btn-donate:hover {
+    background: #fbbf24;
+    transform: translateY(-2px);
+    box-shadow: 0 0 0 1px rgba(251, 191, 36, 0.4), 0 8px 28px rgba(245, 158, 11, 0.3);
+  }
+
+  .btn-donate:active {
+    transform: translateY(0);
+  }
+
+  .btn-donate:focus-visible {
+    outline: 2px solid var(--text);
+    outline-offset: 2px;
+  }
+
+  .donate-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    flex-shrink: 0;
+  }
+
+  .donate-note {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-2);
+    margin-top: var(--space-4);
+    padding: var(--space-3) var(--space-4);
+    background: var(--accent-subtle);
+    border: 1px solid var(--border-focus);
+    border-radius: var(--radius);
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+    line-height: var(--leading-relaxed);
+  }
+
+  .donate-note-icon {
+    flex-shrink: 0;
+    width: 1rem;
+    height: 1rem;
+    margin-top: 2px;
+    color: var(--accent);
+  }
+
+  /* ── Features grid ── */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-3);
+  }
+
+  @media (max-width: 400px) {
+    .features-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .feature-item {
+    padding: var(--space-4) var(--space-4);
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    transition: border-color var(--transition), background var(--transition);
+  }
+
+  .feature-item:hover {
+    border-color: var(--border-focus);
+    background: var(--bg-card-hover);
+  }
+
+  .feature-icon {
+    display: block;
+    font-size: var(--text-xl);
+    margin-bottom: var(--space-2);
+    line-height: 1;
+  }
+
+  .feature-title {
+    display: block;
+    font-family: var(--font-display);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: var(--space-1);
+    letter-spacing: var(--tracking-tight);
+    line-height: var(--leading-snug);
+  }
+
+  .feature-desc {
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    line-height: var(--leading-relaxed);
+    margin: 0;
+  }
+
+  /* ── IP block inner (IP + badge stacked) ── */
+  .ip-block-inner {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .whitelist-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+    color: var(--accent-cta);
+    background: var(--accent-cta-subtle);
+    border: 1px solid rgba(245, 158, 11, 0.2);
+    border-radius: 4px;
+    padding: 2px var(--space-2);
+    white-space: nowrap;
+    width: fit-content;
   }
 
   .footer {
