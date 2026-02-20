@@ -28,18 +28,8 @@
   <div class="pr-stripe" aria-hidden="true"></div>
 
   <div class="bg-theme" aria-hidden="true">
-    <div class="bg-malangas">
-      <div class="bg-malanga bg-malanga-1"></div>
-      <div class="bg-malanga bg-malanga-2"></div>
-      <div class="bg-malanga bg-malanga-3"></div>
-      <div class="bg-malanga bg-malanga-4"></div>
-      <div class="bg-malanga bg-malanga-5"></div>
-      <div class="bg-malanga bg-malanga-6"></div>
-    </div>
-    <div class="bg-noise"></div>
     <div class="bg-gradient-cave"></div>
-    <div class="glow glow-cyan"></div>
-    <div class="glow glow-amber"></div>
+    <div class="bg-noise"></div>
   </div>
 
   <main id="main-content" class="page" role="main">
@@ -56,27 +46,8 @@
         <p class="hero-sub">Boricua roleplay server with jobs, economy, NPCs, RPG classes and more. Whitelist only—donate to get in.</p>
       </header>
 
-      <!-- Server preview / screenshots -->
-      <section class="preview card-reveal" style="--i: 1" aria-labelledby="preview-heading">
-        <h2 id="preview-heading" class="card-label"><span class="label-icon" aria-hidden="true">◇</span> Server preview</h2>
-        <div class="preview-grid">
-          <div class="preview-item">
-            <img src="https://images.pexels.com/photos/1038916/pexels-photo-1038916.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Minecraft world" loading="lazy" width="800" height="450">
-            <span class="preview-caption">World</span>
-          </div>
-          <div class="preview-item">
-            <img src="https://images.pexels.com/photos/7862608/pexels-photo-7862608.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Gameplay" loading="lazy" width="800" height="450">
-            <span class="preview-caption">Gameplay</span>
-          </div>
-          <div class="preview-item">
-            <img src="https://images.pexels.com/photos/3165335/pexels-photo-3165335.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Community" loading="lazy" width="800" height="450">
-            <span class="preview-caption">Community</span>
-          </div>
-        </div>
-      </section>
-
       <!-- Get access -->
-      <section class="card card-theme card-reveal donate-card" style="--i: 2" aria-labelledby="donate-heading">
+      <section class="card card-theme card-reveal donate-card" style="--i: 1" aria-labelledby="donate-heading">
         <h2 id="donate-heading" class="card-label"><span class="label-icon" aria-hidden="true">◇</span> Get access</h2>
         <p class="card-desc">Server is whitelisted. Pay what you want via PayPal and we add you automatically. No minimum, no waiting.</p>
         <a class="btn-donate" href="https://malangarp.tebex.io/package/7293893" target="_blank" rel="noopener noreferrer" aria-label="Donate to get whitelisted via Tebex and PayPal">
@@ -90,44 +61,38 @@
       </section>
 
       <!-- Features -->
-      <section class="card card-theme card-reveal" style="--i: 3" aria-labelledby="features-heading">
+      <section class="card card-theme card-reveal" style="--i: 2" aria-labelledby="features-heading">
         <h2 id="features-heading" class="card-label"><span class="label-icon" aria-hidden="true">◇</span> What to expect</h2>
-        <div class="features-grid">
-          <div class="feature-item">
-            <span class="feature-icon" aria-hidden="true">⚔️</span>
-            <strong class="feature-title">RPG combat</strong>
-            <p class="feature-desc">Classes and stats with MMOCore. Unique mobs and bosses with MythicMobs.</p>
-          </div>
-          <div class="feature-item">
-            <span class="feature-icon" aria-hidden="true">💼</span>
-            <strong class="feature-title">Jobs & economy</strong>
-            <p class="feature-desc">Earn money with JobsReborn. Trade, sell and thrive on the server.</p>
-          </div>
-          <div class="feature-item">
-            <span class="feature-icon" aria-hidden="true">🧑‍🤝‍🧑</span>
-            <strong class="feature-title">NPCs & roleplay</strong>
-            <p class="feature-desc">Living world characters with Citizens. Story, quests and events.</p>
-          </div>
-          <div class="feature-item">
-            <span class="feature-icon" aria-hidden="true">🛡️</span>
-            <strong class="feature-title">Full protection</strong>
-            <p class="feature-desc">CoreProtect logs every block. Your builds and land stay safe.</p>
-          </div>
-          <div class="feature-item">
-            <span class="feature-icon" aria-hidden="true">👑</span>
-            <strong class="feature-title">Ranks & permissions</strong>
-            <p class="feature-desc">LuckPerms for a fair, flexible rank system.</p>
-          </div>
-          <div class="feature-item">
-            <span class="feature-icon" aria-hidden="true">🎙️</span>
-            <strong class="feature-title">Discord bridge</strong>
-            <p class="feature-desc">Chat synced with DiscordSRV. Community always connected.</p>
-          </div>
-        </div>
+        <ul class="features-list" role="list">
+          <li class="feature-row">
+            <span class="feature-tag">RPG</span>
+            <span class="feature-text">Classes &amp; stats via MMOCore, unique bosses via MythicMobs</span>
+          </li>
+          <li class="feature-row">
+            <span class="feature-tag">Economy</span>
+            <span class="feature-text">Earn money with JobsReborn — trade, sell, and thrive</span>
+          </li>
+          <li class="feature-row">
+            <span class="feature-tag">Roleplay</span>
+            <span class="feature-text">Living NPCs via Citizens, story events, and quests</span>
+          </li>
+          <li class="feature-row">
+            <span class="feature-tag">Builds</span>
+            <span class="feature-text">Block logging via CoreProtect — your land stays safe</span>
+          </li>
+          <li class="feature-row">
+            <span class="feature-tag">Ranks</span>
+            <span class="feature-text">Fair, flexible permission system powered by LuckPerms</span>
+          </li>
+          <li class="feature-row">
+            <span class="feature-tag">Discord</span>
+            <span class="feature-text">In-game chat bridged to Discord via DiscordSRV</span>
+          </li>
+        </ul>
       </section>
 
       <!-- Connect -->
-      <section class="card card-theme card-reveal actions-primary" style="--i: 4" aria-labelledby="quick-actions-heading">
+      <section class="card card-theme card-reveal actions-primary" style="--i: 3" aria-labelledby="quick-actions-heading">
         <h2 id="quick-actions-heading" class="card-label"><span class="label-icon" aria-hidden="true">◇</span> Connect</h2>
         <div class="actions-row">
           <div class="ip-block ip-block-cta">
@@ -145,7 +110,7 @@
       </section>
 
       <!-- Server status -->
-      <section class="card card-theme card-reveal" id="server-status" aria-live="polite" style="--i: 5" aria-labelledby="server-status-heading">
+      <section class="card card-theme card-reveal" id="server-status" aria-live="polite" style="--i: 4" aria-labelledby="server-status-heading">
         <h2 id="server-status-heading" class="card-label"><span class="label-icon" aria-hidden="true">◇</span> Server status</h2>
         <div class="status-block" id="status-block">
           <div class="status-loading" id="status-loading">Checking…</div>
