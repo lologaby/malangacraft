@@ -122,9 +122,38 @@ async function fetchServerStatus() {
   }
 }
 
+/**
+ * Scroll reveal: add .revealed when elements enter viewport.
+ */
+function initReveal() {
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  if (prefersReducedMotion) {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('revealed'))
+    return
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed')
+          if (entry.target.id === 'server-status') {
+            const dot = entry.target.querySelector('.status-dot.online')
+            if (dot) dot.classList.add('revealed')
+          }
+        }
+      })
+    },
+    { rootMargin: '0px 0px -8% 0px', threshold: 0 }
+  )
+
+  document.querySelectorAll('.reveal').forEach((el) => observer.observe(el))
+}
+
 function init() {
   const btn = document.querySelector('[data-copy-ip]')
   if (btn) btn.addEventListener('click', copyIP)
+  initReveal()
   fetchServerStatus()
 }
 
