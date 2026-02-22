@@ -172,7 +172,7 @@ function init() {
   const btn = document.querySelector('[data-copy-ip]')
   if (btn) btn.addEventListener('click', copyIP)
 
-  document.querySelectorAll('.btn-drop, .btn-hero').forEach(el => {
+  document.querySelectorAll('.btn-drop, .btn-hero, #btn-connect').forEach(el => {
     el.addEventListener('click', playGravelSound)
   })
 
