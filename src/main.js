@@ -150,9 +150,32 @@ function initReveal() {
   document.querySelectorAll('.reveal').forEach((el) => observer.observe(el))
 }
 
+let audioCtx = null
+
+function playGravelSound() {
+  if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)()
+  if (audioCtx.state === 'suspended') audioCtx.resume()
+
+  fetch('/sound/Gravel.mp3')
+    .then(res => res.arrayBuffer())
+    .then(buf => audioCtx.decodeAudioData(buf))
+    .then(decoded => {
+      const src = audioCtx.createBufferSource()
+      src.buffer = decoded
+      src.connect(audioCtx.destination)
+      src.start(0)
+    })
+    .catch(() => {})
+}
+
 function init() {
   const btn = document.querySelector('[data-copy-ip]')
   if (btn) btn.addEventListener('click', copyIP)
+
+  document.querySelectorAll('.btn-drop, .btn-hero').forEach(el => {
+    el.addEventListener('click', playGravelSound)
+  })
+
   initReveal()
   fetchServerStatus()
 }
