@@ -511,8 +511,115 @@ main {
   transform: translateX(-50%) translateY(0);
 }
 
+/* ─── RETRO BACKGROUND ───────────────────────────── */
+.retro-bg { position: fixed; inset: 0; z-index: -1; overflow: hidden; }
+.retro-gradient {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, #000 0%, #111 25%, #080808 50%, #0a0a0a 70%, #050505 100%);
+}
+.retro-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(0,245,255,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,245,255,.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  transform: perspective(400px) rotateX(60deg);
+  transform-origin: 50% 100%;
+  bottom: -40%; height: 120%;
+  pointer-events: none;
+  animation: grid-drift 20s linear infinite;
+}
+@keyframes grid-drift { to { background-position: 0 60px; } }
+.retro-sun {
+  position: absolute; bottom: 0; left: 0; right: 0; height: 50%;
+  background: linear-gradient(180deg, transparent 0%, rgba(255,0,170,.06) 15%, rgba(255,107,53,.12) 40%, rgba(239,43,45,.18) 60%, rgba(0,40,104,.15) 80%, rgba(0,245,255,.1) 100%);
+  pointer-events: none;
+}
+.retro-scanlines {
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,.1) 2px, rgba(0,0,0,.1) 4px);
+  pointer-events: none; opacity: .4;
+}
+#particles-canvas { position: absolute; inset: 0; pointer-events: none; }
+
+/* Floating Minecraft blocks */
+.floating-block {
+  position: absolute;
+  width: 20px; height: 20px;
+  background: linear-gradient(45deg, rgba(139, 69, 19, 0.6), rgba(160, 82, 45, 0.8));
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 10px rgba(139, 69, 19, 0.4);
+  animation: float 10s ease-in-out infinite;
+  animation-delay: var(--delay);
+  pointer-events: none;
+  opacity: 0.7;
+}
+.floating-block.block-1 { top: 10%; left: 10%; }
+.floating-block.block-2 { top: 30%; right: 15%; }
+.floating-block.block-3 { top: 50%; left: 20%; }
+.floating-block.block-4 { top: 70%; right: 10%; }
+.floating-block.block-5 { bottom: 10%; left: 30%; }
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-20px) rotate(90deg); }
+  50% { transform: translateY(0) rotate(180deg); }
+  75% { transform: translateY(20px) rotate(270deg); }
+}
+
+/* Glitch effect */
+.glitch {
+  position: relative;
+  transition: all 0.3s;
+}
+.glitch:hover {
+  animation: glitch-skew 0.5s linear infinite;
+}
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+}
+.glitch::before {
+  animation: glitch-anim-1 0.5s infinite;
+  color: var(--red);
+  z-index: -1;
+}
+.glitch::after {
+  animation: glitch-anim-2 0.5s infinite;
+  color: var(--green);
+  z-index: -2;
+}
+@keyframes glitch-skew {
+  0%, 100% { transform: skew(0deg); }
+  20% { transform: skew(-2deg); }
+  40% { transform: skew(2deg); }
+  60% { transform: skew(-1deg); }
+  80% { transform: skew(1deg); }
+}
+@keyframes glitch-anim-1 {
+  0%, 100% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+}
+@keyframes glitch-anim-2 {
+  0%, 100% { transform: translate(0); }
+  20% { transform: translate(2px, -2px); }
+  40% { transform: translate(2px, 2px); }
+  60% { transform: translate(-2px, -2px); }
+  80% { transform: translate(-2px, 2px); }
+}
+
 /* ─── REDUCED MOTION ──────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   .status-dot.online { animation: none; }
   .btn-drop, .skip-link { transition: none; }
+  .retro-grid, .floating-block { animation: none; }
+  .glitch:hover { animation: none; }
 }

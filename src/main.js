@@ -122,10 +122,52 @@ async function fetchServerStatus() {
   }
 }
 
+function initParticles() {
+  const canvas = document.getElementById('particles-canvas')
+  if (!canvas) return
+  const ctx = canvas.getContext('2d')
+  canvas.width = window.innerWidth
+  canvas.height = window.innerHeight
+
+  const particles = []
+  for (let i = 0; i < 50; i++) {
+    particles.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      vx: (Math.random() - 0.5) * 0.5,
+      vy: (Math.random() - 0.5) * 0.5,
+      size: Math.random() * 2 + 1,
+      color: ['#00f5ff', '#ff00aa', '#22c55e'][Math.floor(Math.random() * 3)]
+    })
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
+    particles.forEach(p => {
+      p.x += p.vx
+      p.y += p.vy
+      if (p.x < 0 || p.x > canvas.width) p.vx *= -1
+      if (p.y < 0 || p.y > canvas.height) p.vy *= -1
+      ctx.fillStyle = p.color
+      ctx.beginPath()
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2)
+      ctx.fill()
+    })
+    requestAnimationFrame(animate)
+  }
+  animate()
+
+  window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth
+    canvas.height = window.innerHeight
+  })
+}
+
 function init() {
   const btn = document.querySelector('[data-copy-ip]')
   if (btn) btn.addEventListener('click', copyIP)
   fetchServerStatus()
+  initParticles()
 }
 
 if (document.readyState === 'loading') {
