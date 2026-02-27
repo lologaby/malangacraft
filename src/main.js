@@ -163,11 +163,49 @@ function initParticles() {
   })
 }
 
+function initAnimations() {
+  gsap.registerPlugin(ScrollTrigger)
+
+  // Hero entrance
+  gsap.from('.hero-title', { duration: 1, y: 50, opacity: 0, ease: 'power2.out' })
+  gsap.from('.hero-tagline', { duration: 1, y: 30, opacity: 0, delay: 0.2, ease: 'power2.out' })
+  gsap.from('.hero-cta-row', { duration: 1, y: 30, opacity: 0, delay: 0.4, ease: 'power2.out' })
+
+  // Stagger section reveals
+  gsap.utils.toArray('.reveal').forEach((el, i) => {
+    gsap.from(el, {
+      duration: 0.8,
+      y: 40,
+      opacity: 0,
+      ease: 'power2.out',
+      scrollTrigger: {
+        trigger: el,
+        start: 'top 80%',
+        toggleActions: 'play none none reverse'
+      }
+    })
+  })
+
+  // Floating blocks with GSAP
+  gsap.utils.toArray('.floating-block').forEach((block, i) => {
+    gsap.to(block, {
+      y: 'random(-20, 20)',
+      rotation: 'random(-10, 10)',
+      duration: 3 + i,
+      ease: 'sine.inOut',
+      yoyo: true,
+      repeat: -1,
+      delay: i * 0.5
+    })
+  })
+}
+
 function init() {
   const btn = document.querySelector('[data-copy-ip]')
   if (btn) btn.addEventListener('click', copyIP)
   fetchServerStatus()
   initParticles()
+  initAnimations()
 }
 
 if (document.readyState === 'loading') {
